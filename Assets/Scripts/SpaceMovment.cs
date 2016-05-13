@@ -15,35 +15,36 @@ public class SpaceMovment : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float horizontalDir = Input.GetAxis("Horizontal");
-		float horizontalTranslation = horizontalDir * speed;
-	    float angle = Vector3.Angle(min, transform.position);
-	    if (angle <= 1f && horizontalDir > 0f){
-	        return;
-	    } else if(angle >= 179f && horizontalDir < 0f) {
-	        return;
-	    }
-	    horizontalTranslation *= Time.deltaTime;
-        transform.RotateAround(Vector3.zero, Vector3.up, horizontalTranslation);
+		moveHorizontally ();
 
 		if (Input.GetKeyDown ("up")) {
-			moveVertical (1f);
+			moveVertically (1f);
 		} 
 		if (Input.GetKeyDown ("down")) {
-			moveVertical (-1f);
+			moveVertically (-1f);
 		} 
-		//transform.Translate (0, verticalTranslation, 0);
-
 	}
 
-	private void moveVertical(float direction) {
-		float tmp = height + direction * jumpHeight;
-		if (tmp <= -jumpHeight && direction < 0)
+	private void moveHorizontally() {
+		float horizontalDir = Input.GetAxis("Horizontal");
+		float horizontalTranslation = horizontalDir * speed;
+		float angle = Vector3.Angle(min, transform.position);
+
+		if (angle <= 1f && horizontalDir > 0f){
 			return;
-		else if (tmp >= maxHeight && direction > 0) 
+		} else if(angle >= 179f && horizontalDir < 0f) {
 			return;
-		height += direction * jumpHeight;
-		Debug.Log ("y: " + height);
-		transform.Translate (0, height, 0);
+		}
+		horizontalTranslation *= Time.deltaTime;
+		transform.RotateAround(Vector3.zero, Vector3.up, horizontalTranslation);	
+	}
+
+	private void moveVertically(float direction) {
+		float jump = direction * jumpHeight;
+		float tmp = height + jump;
+		if (tmp < 0f || tmp > maxHeight) 
+			return;
+		height = tmp;
+		transform.Translate (0, jump, 0);
 	}
 }
