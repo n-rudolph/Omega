@@ -13,6 +13,12 @@ public class BulletLife : MonoBehaviour {
         if (lifeTime <= 0) {
             Destroy(this.gameObject);
         }
-
 	}
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Defense") {
+            Destroy(transform.gameObject);
+        }
+    }
 }

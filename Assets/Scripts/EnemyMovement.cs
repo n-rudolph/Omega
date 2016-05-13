@@ -63,7 +63,7 @@ public class EnemyMovement : MonoBehaviour {
             z = 0 + Mathf.Cos(angle * Mathf.PI / 180) * radius;
 
             transform.position = new Vector3((float)x, height, (float)z);
-            Debug.Log(currentRadius - radiusJump +" radius: "+ radius);
+            
             if (currentRadius - radiusJump >= radius){
                 radiusBool = true;
             }
