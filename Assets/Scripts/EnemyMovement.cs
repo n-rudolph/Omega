@@ -7,13 +7,13 @@ public class EnemyMovement : MonoBehaviour {
 
     private float angle = 0;
     [SerializeField]
-    private float radius = 15;
+    private float radius;
     [SerializeField]
-    private float radiusJump = 5;
+    private float radiusJump;
     [SerializeField]
-    private float height = -2f;
+    private float height;
     [SerializeField]
-    private float heightJump = 5;
+    private float heightJump;
 
     private bool left;
     private bool right;
