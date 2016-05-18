@@ -23,22 +23,24 @@ public class EnemyShoot : MonoBehaviour
 	    {
             if (fireTimer > 0)
             {
-                fire = false;
                 fireTimer -= Time.deltaTime;
             }
             if (fireTimer <= 0)
 	        {
 	            Fire();
 	            fireTimer = enableGunTime;
-	        }
+                fire = false;
+            }
 	        
 	    }
 	}
 
     public void Fire()
     {
-        Rigidbody bullet = (Rigidbody)Instantiate(bulletPrefab, transform.parent.transform.position, Quaternion.identity);
-        bullet.AddForce(new Vector3(0, 0, 1)*10);
+        GameObject go = (GameObject)Instantiate(bulletPrefab, transform.position, Quaternion.Euler(0, 180, 0));
+        BulletLife bulletLife = go.GetComponent<BulletLife>();
+        bulletLife.SetTarget(new Vector3(0, GetComponent<EnemyMovement>().Height, 0));
+
     }
 
     public void EnableFire()

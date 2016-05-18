@@ -43,7 +43,7 @@ public class EnemyGenerator : MonoBehaviour
 	        {
 	            if (enemyCreationTimer <= 0)
 	            {
-                    enemyFireController.addEnemy(generateEnemy().gameObject);
+                    enemyFireController.AddEnemy(generateEnemy().gameObject);
 	                enemiesCreated += 1;
 	                enemyCreationTimer = creationTimeGap;
 	            }
@@ -66,7 +66,7 @@ public class EnemyGenerator : MonoBehaviour
 
     public Transform generateEnemy()
     {
-        Transform t =(Transform)Instantiate(enemyPrefab, generationPoint, Quaternion.identity);
+        Transform t =(Transform)Instantiate(enemyPrefab, generationPoint, Quaternion.Euler(90, 180, 0));
         return t;
     }
 }

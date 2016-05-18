@@ -52,7 +52,7 @@ public class EnemyMovement : MonoBehaviour {
             {
                 angle = angle - 15 * Time.deltaTime;
             }
-
+            
             transform.position = new Vector3((float)x, height, (float)z);
         } else {
             bool heightBool = false;
@@ -81,5 +81,11 @@ public class EnemyMovement : MonoBehaviour {
         forward = true;
         currentHeight = height;
         currentRadius = radius;
+    }
+
+    public float Height
+    {
+        get { return height; }
+        set { height = value; }
     }
 }
