@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.Assertions.Comparers;
 
-public class SpaceMovment : MonoBehaviour {
+public class SpaceMovement : MonoBehaviour {
     public float speed = 1.0F;
     private static Vector3 min = new Vector3(1, 0, 0);
 	private const float jumpHeight = 5;
