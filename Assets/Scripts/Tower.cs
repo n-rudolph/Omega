@@ -9,11 +9,10 @@ public class Tower : MonoBehaviour {
 	private float shootTime;
 	public int life;
 	private const int damage = 1;
-	public float[] shootDirections;
 
 	// Use this for initialization
 	void Start () {
-		shootTime = 5f;
+		shootTime = 10f;
 		InvokeRepeating ("shoot", shootTime, shootTime);	
 	}
 
@@ -35,15 +34,15 @@ public class Tower : MonoBehaviour {
 	}
 
 	private void shoot () {
-		Vector3 position = transform.position;
-		for (int i = 0; i < shootDirections.Length; i++) {
-			float shootDirection = shootDirections [i];
+		float y = transform.position.y;
+		for (int i = 0; i < 3; i++) {
 			Vector3 shootPosition = transform.position;
-			shootPosition.y = shootDirection;
+			shootPosition.y = y;
 			shootPosition.z += 3f;
 			GameObject go = (GameObject)Instantiate (prefab, shootPosition, Quaternion.Euler (Vector3.forward));
 			Rigidbody rb = go.GetComponent<Rigidbody> ();
 			rb.AddForce (Vector3.forward * shootForce);
+			y += 5;
 		}
 	}
 }
