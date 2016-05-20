@@ -5,6 +5,7 @@ public class EnemyLife : MonoBehaviour
 {
     public float life;
     public ScoreController scoreController;
+    
     public float points;
 
     void Start()

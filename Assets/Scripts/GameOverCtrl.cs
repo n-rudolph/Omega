@@ -1,35 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameOverCtrl : MonoBehaviour
 {
 
     public ScoreController scoreController;
 
+    public Text finishText;
+    public RectTransform panel;
+
     private bool gameOn = true;
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     public void GameOver(bool gameWon)
     {
         if (gameOn)
         {
-            EndAnimation();
+            panel.gameObject.SetActive(true);
+            finishText.gameObject.SetActive(true);
+            if (gameWon)
+            {
+                finishText.text = "You Won!! \n\n Score : " + scoreController.GetScore();
+            }
+            else
+            {
+                finishText.text = "Game Over!!";
+            }
+            
             gameOn = false;
         }
 
     }
 
-    private void EndAnimation()
-    {
-        
-
-    }
 }

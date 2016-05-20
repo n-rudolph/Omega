@@ -146,4 +146,9 @@ public class EnemyGenerator : MonoBehaviour
     {
         return (GameObject)Instantiate(prefab, generationPoint, Quaternion.Euler(90, 180, 0));
     }
+
+    public float GetTotalEnemyAmount()
+    {
+       return amountEnemyWaves1* amountEnemyPerWaves1 + amountEnemyWaves2 * amountEnemyPerWaves2 + amountEnemyWaves3* amountEnemyWaves3;
+    }
 }

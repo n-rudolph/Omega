@@ -25,6 +25,8 @@ public class EnemyMovement : MonoBehaviour {
     private float currentHeight;
     private float currentRadius;
 
+    public GameOverCtrl goCtrl;
+
     // Update is called once per frame
     void Update () {
         if (!forward)
@@ -74,6 +76,8 @@ public class EnemyMovement : MonoBehaviour {
                 forward = false;
             }
         }
+        if (radius<=10)
+            goCtrl.GameOver(false);
 
     }
 

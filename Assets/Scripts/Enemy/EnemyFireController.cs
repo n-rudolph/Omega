@@ -6,14 +6,20 @@ public class EnemyFireController : MonoBehaviour
 {
 
     public List<GameObject> enemies;
+    public GameOverCtrl goCtrl;
 
     public float shootTimeGapMin;
     public float shootTimeGapMax;
     private float shootTimer;
+    private EnemyGenerator enemyGenerator;
+    private float enemyAmount=0;
 
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+	    enemyGenerator = GetComponent<EnemyGenerator>();
+	    enemyAmount = enemyGenerator.GetTotalEnemyAmount();
 	    enemies= new List<GameObject>();
 	    shootTimer = 0;
 	}
@@ -36,6 +42,9 @@ public class EnemyFireController : MonoBehaviour
 	    {
 	        shootTimer -= Time.deltaTime;
 	    }
+        if (enemyAmount<=0)
+            goCtrl.GameOver(true);
+            
 	}
 
     public void AddEnemy(GameObject enemy)
@@ -46,5 +55,6 @@ public class EnemyFireController : MonoBehaviour
     public void RemoveEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
+        enemyAmount--;
     }
 }

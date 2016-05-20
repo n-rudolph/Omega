@@ -8,6 +8,7 @@ public class SpaceShipLife : MonoBehaviour {
 	private const int startLife = 3;
 	private const int damage = 1;
 	public bool shieldActivate;
+    public GameOverCtrl goCtrl;
 
     public Text lifeText;
 
@@ -24,7 +25,7 @@ public class SpaceShipLife : MonoBehaviour {
 		switch(tag){
 		case "Bullet":
 			hurt ();
-            Destroy(c.gameObject);
+            Destroy(c.collider.gameObject);
 			break;
 		case "Shield":
 			GetComponent<Shield> ().use ();
@@ -44,7 +45,7 @@ public class SpaceShipLife : MonoBehaviour {
 			} else {
 				lifes -= damage;
 			    lifeText.text = "Lives: " + lifes;
-				playerAudio.Play ();
+				//playerAudio.Play ();
 			}
 		} else {
 
@@ -53,9 +54,10 @@ public class SpaceShipLife : MonoBehaviour {
 	}
 
 	private void death() {
-		playerAudio.clip = deathClip;
-		playerAudio.Play ();
-		Destroy (this.gameObject);
+		//playerAudio.clip = deathClip;
+		//playerAudio.Play ();
+        goCtrl.GameOver(false);
+		//Destroy (this.gameObject);
 	}
 
 }

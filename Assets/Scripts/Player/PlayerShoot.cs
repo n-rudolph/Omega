@@ -38,8 +38,6 @@ public class PlayerShoot : MonoBehaviour {
         if (reloadTimer > 0) {
             reloadTimer -= Time.deltaTime;
         }
-	    
-	    
 
 	}
 
