@@ -11,7 +11,6 @@ public class LookAtCenter : MonoBehaviour
 	    height = 0;
 
 	    sm = gameObject.GetComponent<SpaceMovment>();
-        Debug.Log(sm);
 	}
 	
 	// Update is called once per frame

@@ -22,7 +22,6 @@ public class Shield: MonoBehaviour {
 	public void use() {
 		spaceShipLife.shieldActivate = true;
 		life = 3;
-		Debug.Log ("Activated");
 	}
 
 	public void hurt() {

@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class SpaceShipLife : MonoBehaviour {
 	private int score;
 	private int lifes;
 	private const int startLife = 3;
 	private const int damage = 1;
-	public bool shieldActivate; 
+	public bool shieldActivate;
+
+    public Text lifeText;
 
 	public AudioClip deathClip;
 	private AudioSource playerAudio;
@@ -16,25 +19,13 @@ public class SpaceShipLife : MonoBehaviour {
 		lifes = startLife;
 	}
 
-	// Use this for initialization
-	void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	}
-
-	private void updateScore() {
-		
-	}
-
 	void OnCollisionEnter(Collision c) {
 		string tag = c.collider.tag;
-		Debug.Log (tag);
 		switch(tag){
 		case "Bullet":
 			Debug.Log("Hurt");
 			hurt ();
+            Destroy(c.gameObject);
 			break;
 		case "Shield":
 			GetComponent<Shield> ().use ();
@@ -53,8 +44,8 @@ public class SpaceShipLife : MonoBehaviour {
 				death ();
 			} else {
 				lifes -= damage;
+			    lifeText.text = "Lives: " + lifes;
 				playerAudio.Play ();
-				Debug.Log ("Life: " + lifes);
 			}
 		} else {
 			Debug.Log("Shiel Activated");

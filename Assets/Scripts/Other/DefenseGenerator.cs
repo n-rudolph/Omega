@@ -14,7 +14,7 @@ public class DefenseGenerator : MonoBehaviour{
         angleInterval=180/45;
 	    if (defenseAmount > 35)
 	        defenseAmount = 35;
-	    defenseMatrix = new bool[4,80];
+	    defenseMatrix = new bool[4,45];
 	    GenerateDefense();
 	    InstantiateDefense();
 	}

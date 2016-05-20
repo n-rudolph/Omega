@@ -32,22 +32,22 @@ public class ScoreController : MonoBehaviour
         torret1Score -= points;
         torret2Score -= points;
 
-        if (shieldScore < 0)
+        if (shieldScore <= 0)
         {
             puCtrl.ActivateShield();
             shieldScore = 40f;
         }
-        if (cannonScore < 0)
+        if (cannonScore <= 0)
         {
             puCtrl.ActivateCannon();
             cannonScore = 60f;
         }
-        if (torret1Score < 0)
+        if (torret1Score <= 0)
         {
             puCtrl.ActivateTorret1();
             shieldScore = 70f;
         }
-        if (torret2Score < 0)
+        if (torret2Score <= 0)
         {
             puCtrl.ActivateTorret2();
             shieldScore = 80f;
