@@ -65,7 +65,6 @@ public class EnemyGenerator : MonoBehaviour
                 hasWavesLeft2 = GenerateEnemy2();
             if (!hasWavesLeft1 && !hasWavesLeft2 && hasWavesLeft3)
                 hasWavesLeft3 = GenerateEnemy3();
-            Debug.Log(enemyCreationTimer);
 	    }
 	    if (waveGapTimer > 0)
 	        waveGapTimer -= Time.deltaTime;
@@ -90,7 +89,7 @@ public class EnemyGenerator : MonoBehaviour
             createdEnemiesPerWaves1 = amountEnemyPerWaves1;
             waveGapTimer = timeBetweenWaves;
         }
-        Debug.Log(amountEnemyWaves1);
+
         if (amountEnemyWaves1 == 0)
             return false;
         return true;
@@ -107,7 +106,6 @@ public class EnemyGenerator : MonoBehaviour
         
         if (enemyCreationTimer > 0)
         {
-            Debug.Log("resta");
             enemyCreationTimer -= Time.deltaTime;
         }
 

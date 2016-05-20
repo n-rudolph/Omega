@@ -4,13 +4,14 @@ using System.Collections;
 public class LookAtCenter : MonoBehaviour
 {
     private float height;
-
-    private SpaceMovment sm;
+	private SpaceMovment sm;
 	// Use this for initialization
 	void Start ()
 	{
 	    height = 0;
-	    sm = GetComponent<SpaceMovment>();
+
+	    sm = gameObject.GetComponent<SpaceMovment>();
+        Debug.Log(sm);
 	}
 	
 	// Update is called once per frame

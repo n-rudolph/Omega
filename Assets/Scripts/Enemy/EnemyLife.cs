@@ -5,15 +5,10 @@ public class EnemyLife : MonoBehaviour
 {
     public float life;
 	
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Bullet"))
+        if (other.CompareTag("PlayerBullet"))
         {
             GameObject bullet = other.gameObject;
             PlayerBulletLife bl = bullet.GetComponent<PlayerBulletLife>();

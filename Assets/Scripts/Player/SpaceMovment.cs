@@ -130,16 +130,6 @@ public class SpaceMovment : MonoBehaviour {
         return new Vector3((float) x, 0, (float) z);
     }
 
-	private Vector3 moveVertically(float direction) {
-		float jump = direction * jumpHeight;
-		float tmp = height + jump;
-		if (tmp < 0f || tmp > maxHeight) 
-			return new Vector3(0, height, 0);
-		height = tmp;
-	    return new Vector3(0, jump, 0);
-		//transform.Translate (0, jump, 0);
-	}
-
     //calculate vertical translation
     private Vector3 moveV(float direction)
     {
