@@ -35,14 +35,22 @@ public class Radar : MonoBehaviour {
 
 	public void OnGUI() {
 		if(centerObject){
+//			var guiPosition = Camera.main.WorldToScreenPoint(transform.position);
+//			guiPosition.y = Screen.height - guiPosition.y;
+
+//			Rect r = GetComponent<Canvas> ().pixelRect;
+
+//			Vector3 center = Camera.main.WorldToScreenPoint(GetComponent<Collider> ().bounds.center);
 			Rect r=new Rect(Screen.width-50 - RadarSize, 50, RadarSize, RadarSize);
 
 			UnityEngine.GUI.DrawTexture(r, radarBG, ScaleMode.StretchToFill);
 			mapCenter = new Vector2(Screen.width-50-RadarSize/2,50+RadarSize/2);
+
+//			mapCenter = new Vector2(center.x, center.z);
+
 			foreach(RComp c in RadaObjects){   
 				GameObject[] gos = GameObject.FindGameObjectsWithTag(c.TagName);
 				foreach (GameObject go in gos){
-					Debug.Log("Entro");
 					drawBlip(go, c.OnRadar);
 				}
 			}

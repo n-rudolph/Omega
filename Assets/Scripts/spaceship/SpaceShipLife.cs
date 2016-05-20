@@ -30,32 +30,35 @@ public class SpaceShipLife : MonoBehaviour {
 
 	void OnCollisionEnter(Collision c) {
 		string tag = c.collider.tag;
-
+		Debug.Log (tag);
 		switch(tag){
-			case "Bullet":
-				if (!shieldActivate) hurt ();
+		case "Bullet":
+			Debug.Log("Hurt");
+			hurt ();
+			break;
+		case "Shield":
+			GetComponent<Shield> ().use ();
+			shieldActivate = true;
 				break;
-			case "Shield":
-				Shield shield = GetComponent<Shield> ();
-				shield.enabled = true;
-				shield.use ();
-				break;
-			case "Arm1": 
-				break;
-			case "Arm2":
-				break;
-			default:
-				break;
+		case "Arm1": 
+			break;
+		default:
+			break;
 		}
 	}
 
 	private void hurt(){
-		if (lifes - damage <= 0) {
-			death ();
+		if (!shieldActivate) {
+			if (lifes - damage <= 0) {
+				death ();
+			} else {
+				lifes -= damage;
+				playerAudio.Play ();
+				Debug.Log ("Life: " + lifes);
+			}
 		} else {
-			lifes -= damage;
-			playerAudio.Play ();
-			Debug.Log("Life: " + lifes);
+			Debug.Log("Shiel Activated");
+			GetComponent<Shield> ().hurt();
 		}
 	}
 
