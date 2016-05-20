@@ -4,12 +4,12 @@ using System.Collections;
 public class EnemyLife : MonoBehaviour
 {
     public float life;
-    public ScoreController scoreController;
+//    public ScoreController scoreController;
     public float points;
 
     void Start()
     {
-        scoreController = FindObjectOfType<ScoreController>();
+//        scoreController = FindObjectOfType<ScoreController>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -22,7 +22,7 @@ public class EnemyLife : MonoBehaviour
             Destroy(bullet);
             if (life <= 0)
             {
-                scoreController.AddScore(points);
+//                scoreController.AddScore(points);
                 Destroy(this.gameObject);
             }
         }
