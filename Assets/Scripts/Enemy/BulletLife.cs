@@ -36,4 +36,5 @@ public class BulletLife : MonoBehaviour {
     {
         this.target = target;
     }
+
 }

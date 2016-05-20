@@ -18,8 +18,8 @@ public class BulletReloaded : MonoBehaviour {
 		
 	}
 
-	void OnCollisionEnter(Collision c) {
-		if (c.collider.CompareTag("Enemy"))
+	void OnTriggerEnter(Collider c) {
+		if (c.CompareTag("Enemy"))
 		{
 			shoot ();
 		}

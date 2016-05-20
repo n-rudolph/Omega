@@ -11,7 +11,7 @@ public class ScoreController : MonoBehaviour
     private float score;
 
     private float shieldScore = 40f;
-    private float cannonScore = 60f;
+    private float cannonScore = 30f;
     private float torret1Score = 70f;
     private float torret2Score = 80f;
 
@@ -40,7 +40,7 @@ public class ScoreController : MonoBehaviour
         if (cannonScore <= 0)
         {
             puCtrl.ActivateCannon();
-            cannonScore = 60f;
+            cannonScore = 30f;
         }
         if (torret1Score <= 0)
         {

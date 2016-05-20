@@ -23,7 +23,6 @@ public class SpaceShipLife : MonoBehaviour {
 		string tag = c.collider.tag;
 		switch(tag){
 		case "Bullet":
-			Debug.Log("Hurt");
 			hurt ();
             Destroy(c.gameObject);
 			break;
@@ -48,7 +47,7 @@ public class SpaceShipLife : MonoBehaviour {
 				playerAudio.Play ();
 			}
 		} else {
-			Debug.Log("Shiel Activated");
+
 			GetComponent<Shield> ().hurt();
 		}
 	}

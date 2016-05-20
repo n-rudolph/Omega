@@ -3,20 +3,30 @@ using System.Collections;
 
 public class PlayerShoot : MonoBehaviour {
 
-    [SerializeField]
     private GameObject prefab;
-	private GameObject bulletReloaded;
+
+    public GameObject commonBullet;
+	public GameObject bulletReloaded;
 	private bool laserActivated;
 
     [SerializeField]
     private float reloadTime;
 
-    private float reloadTimer= 0f;
+    private float reloadTimer = 0f;
+
+    private float laserTimer = 0 ;
 
 	
 	// Update is called once per frame
 	void Update () {
-		if (laserActivated) {
+        if (laserTimer > 0)
+            laserTimer -= Time.deltaTime;
+        if (laserTimer <= 0)
+        {
+            prefab = commonBullet;
+            laserActivated = false;
+        }
+        if (laserActivated) {
 			prefab = bulletReloaded;
 		}
         if (Input.GetMouseButtonDown(0) || Input.GetAxis("Fire1")>0) {
@@ -28,6 +38,14 @@ public class PlayerShoot : MonoBehaviour {
         if (reloadTimer > 0) {
             reloadTimer -= Time.deltaTime;
         }
-        
+	    
+	    
+
 	}
+
+    public void ActivateLaser()
+    {
+        laserActivated = true;
+        laserTimer = 5f;
+    }
 }

@@ -4,12 +4,11 @@ using System.Collections;
 public class PowerUpController : MonoBehaviour
 {
 
-    public GameObject shieldPrefab;
-    public GameObject cannonPrefab;
     public GameObject torret1Prefab;
     public GameObject torret2Prefab;
 
     public Shield shieldScript;
+    public PlayerShoot playerShoot;
 
     private bool shield= false;
     private bool cannon=false;
@@ -32,7 +31,7 @@ public class PowerUpController : MonoBehaviour
 	        }
 	        if (cannon)
 	        {
-                
+                playerShoot.ActivateLaser();
 	        }
 	        if (torret1)
 	        {
