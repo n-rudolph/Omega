@@ -25,7 +25,13 @@ public class EnemyMovement : MonoBehaviour {
     private float currentHeight;
     private float currentRadius;
 
-    public GameOverCtrl goCtrl;
+    private GameOverCtrl goCtrl;
+
+    void Start()
+    {
+        GameObject go = GameObject.FindGameObjectWithTag("GameOverCtrl");
+        goCtrl = go.GetComponent<GameOverCtrl>();
+    }
 
     // Update is called once per frame
     void Update () {
@@ -76,9 +82,13 @@ public class EnemyMovement : MonoBehaviour {
                 forward = false;
             }
         }
-        if (radius<=10)
-            goCtrl.GameOver(false);
 
+        if (radius <= 25)
+        {
+            Debug.Log("radio menor");
+            goCtrl.GameOver(false);
+        }
+        
     }
 
     void MoveForward() {

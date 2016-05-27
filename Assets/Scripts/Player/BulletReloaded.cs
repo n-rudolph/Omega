@@ -21,20 +21,23 @@ public class BulletReloaded : MonoBehaviour {
 	void OnTriggerEnter(Collider c) {
 		if (c.CompareTag("Enemy"))
 		{
-			shoot ();
+			Shoot ();
 		}
 	}
 
-	private void shoot() {
+	private void Shoot() {
 		Vector3 shootPosition = transform.position;
 		//		shootPosition.z += 3f;
 		float xDir = 1;
 		for (int i = quantityOfShoots; i > 0; i--) {
-			GameObject go = (GameObject)Instantiate (prefab, shootPosition, Quaternion.Euler (Vector3.forward));
+			Debug.Log ("Multiplicar");
+			GameObject go = (GameObject)Instantiate (prefab, shootPosition, Quaternion.identity);
 			Rigidbody rb = go.GetComponent<Rigidbody> ();
-			Vector3 dir = Vector3.left;
+			SimpleBulletLife bl = go.GetComponent<SimpleBulletLife>();
+			Vector3 dir = Vector3.right;
 			dir.x *= xDir;
 			rb.AddForce (dir * shootForce);	
+			bl.direction = dir;
 			xDir = -1;
 		}
 	}

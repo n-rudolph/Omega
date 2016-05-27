@@ -7,26 +7,41 @@ public class GameOverCtrl : MonoBehaviour
 
     public ScoreController scoreController;
 
-    public Text finishText;
-    public RectTransform panel;
+    public GameObject finishCanvas;
+    public GameObject finishText;
+
+    private Canvas canvas;
+    private Text text;
+
+	private SoundController soundCtrl;
+
+    void Start()
+    {
+        canvas = finishCanvas.GetComponent<Canvas>();
+        text = finishText.GetComponent<Text>();
+		soundCtrl = GetComponent<SoundController> ();
+		soundCtrl.PlayBackgroundSound (SoundEnum.BACKGROUND);
+    }
 
     private bool gameOn = true;
 
     public void GameOver(bool gameWon)
     {
+        
         if (gameOn)
         {
-            panel.gameObject.SetActive(true);
-            finishText.gameObject.SetActive(true);
+            canvas.enabled = true;
+            
             if (gameWon)
             {
-                finishText.text = "You Won!! \n\n Score : " + scoreController.GetScore();
+				soundCtrl.PlayBackgroundSound (SoundEnum.VICTORY);
+                text.text = "\nYou Won!! \n\n Score : " + scoreController.GetScore();
             }
             else
             {
-                finishText.text = "Game Over!!";
+				soundCtrl.PlayBackgroundSound (SoundEnum.GAMEOVER);
+                text.text = "\nGame Over!! \n\n You Lose";
             }
-            
             gameOn = false;
         }
 

@@ -7,6 +7,8 @@ public class PlayerShoot : MonoBehaviour {
 
     public GameObject commonBullet;
 	public GameObject bulletReloaded;
+	public SoundController soundCtrl;
+
 	private bool laserActivated;
 
     [SerializeField]
@@ -31,6 +33,7 @@ public class PlayerShoot : MonoBehaviour {
 		}
         if (Input.GetMouseButtonDown(0) || Input.GetAxis("Fire1")>0) {
             if (reloadTimer <= 0) {
+				soundCtrl.PlaySoundEffect (SoundEnum.SHOOT);
                 Instantiate(prefab, transform.position, transform.rotation);
                 reloadTimer = reloadTime;
             }

@@ -41,23 +41,14 @@ public class SpaceShipLife : MonoBehaviour {
 	private void hurt(){
 		if (!shieldActivate) {
 			if (lifes - damage <= 0) {
-				death ();
-			} else {
+                goCtrl.GameOver(false);
+            } else {
 				lifes -= damage;
 			    lifeText.text = "Lives: " + lifes;
 				//playerAudio.Play ();
 			}
 		} else {
-
 			GetComponent<Shield> ().hurt();
 		}
 	}
-
-	private void death() {
-		//playerAudio.clip = deathClip;
-		//playerAudio.Play ();
-        goCtrl.GameOver(false);
-		//Destroy (this.gameObject);
-	}
-
 }

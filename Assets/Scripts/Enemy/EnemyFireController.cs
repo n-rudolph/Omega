@@ -55,6 +55,7 @@ public class EnemyFireController : MonoBehaviour
     public void RemoveEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
+
         enemyAmount--;
     }
 }
