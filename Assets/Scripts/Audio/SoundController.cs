@@ -29,10 +29,14 @@ public class SoundController : MonoBehaviour {
 		soundEffects.Add(SoundEnum.POWERUP, powerUp);
 		soundEffects.Add(SoundEnum.SHIELD, shield);
 
-		backgroundSounds.Add(SoundEnum.BACKGROUND, background);
+		soundEffects.Add(SoundEnum.BACKGROUND, background);
 		backgroundSounds.Add(SoundEnum.GAMEOVER, gameOver);
 		backgroundSounds.Add(SoundEnum.VICTORY, victory);
+
+		PlaySoundEffect(SoundEnum.BACKGROUND);
     }
+
+
 
     public void PlaySoundEffect(SoundEnum key)
     {

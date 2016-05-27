@@ -4,15 +4,10 @@ using System.Collections;
 public class SimpleBulletLife : MonoBehaviour {
 
 	public float life = 10f;
-	public float speed= 10f;
+	public float speed= 20f;
 	public Vector3 direction;
 	public float damage = 30f;
 
-	// Use this for initialization
-	void Start ()
-	{
-		direction.Normalize();      
-	}
 
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +17,7 @@ public class SimpleBulletLife : MonoBehaviour {
 		}
 		transform.Translate(direction * speed * Time.deltaTime, Space.World);
 		life -= 1*Time.deltaTime;
+		Debug.Log (direction);
 	}
 
 	public float Damage
@@ -29,6 +25,7 @@ public class SimpleBulletLife : MonoBehaviour {
 		get { return damage; }
 		set { damage = value; }
 	}
+		
 
 	
 }

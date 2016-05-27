@@ -151,4 +151,8 @@ public class EnemyGenerator : MonoBehaviour
     {
        return amountEnemyWaves1* amountEnemyPerWaves1 + amountEnemyWaves2 * amountEnemyPerWaves2 + amountEnemyWaves3* amountEnemyWaves3;
     }
+
+	public float TotalEnemies(){
+		return amountEnemyWaves1 * amountEnemyPerWaves1 + amountEnemyWaves2 * amountEnemyPerWaves2 + amountEnemyWaves3 * amountEnemyPerWaves3;
+	}
 }

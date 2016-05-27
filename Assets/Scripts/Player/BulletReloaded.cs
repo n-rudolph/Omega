@@ -3,11 +3,15 @@ using System.Collections;
 
 public class BulletReloaded : MonoBehaviour {
 	[SerializeField]
-	private GameObject prefab;
+	private GameObject prefabLeft;
+	[SerializeField]
+	private GameObject prefabRight;
 	[SerializeField]
 	private float shootForce;
 	// Use this for initialization
 	private int quantityOfShoots;
+
+	private float damage = 0f;
 
 	void Start () {
 		quantityOfShoots = 2;
@@ -28,18 +32,17 @@ public class BulletReloaded : MonoBehaviour {
 	private void Shoot() {
 		Vector3 shootPosition = transform.position;
 		//		shootPosition.z += 3f;
-		float xDir = 1;
-		for (int i = quantityOfShoots; i > 0; i--) {
-			Debug.Log ("Multiplicar");
-			GameObject go = (GameObject)Instantiate (prefab, shootPosition, Quaternion.identity);
-			Rigidbody rb = go.GetComponent<Rigidbody> ();
-			SimpleBulletLife bl = go.GetComponent<SimpleBulletLife>();
-			Vector3 dir = Vector3.right;
-			dir.x *= xDir;
-			rb.AddForce (dir * shootForce);	
-			bl.direction = dir;
-			xDir = -1;
-		}
+
+			GameObject go1 = (GameObject)Instantiate (prefabLeft, shootPosition, Quaternion.Euler(Vector3.forward));
+			GameObject go2 = (GameObject)Instantiate (prefabRight, shootPosition, Quaternion.Euler(Vector3.forward));
+			
+
+	}
+
+	public float Damage
+	{
+		get { return damage; }
+		set { damage = value; }
 	}
 
 

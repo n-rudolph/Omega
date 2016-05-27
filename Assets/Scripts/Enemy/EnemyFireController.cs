@@ -14,6 +14,8 @@ public class EnemyFireController : MonoBehaviour
     private EnemyGenerator enemyGenerator;
     private float enemyAmount=0;
 
+	private float totalAmout;
+
 
 	// Use this for initialization
 	void Start ()
@@ -22,6 +24,7 @@ public class EnemyFireController : MonoBehaviour
 	    enemyAmount = enemyGenerator.GetTotalEnemyAmount();
 	    enemies= new List<GameObject>();
 	    shootTimer = 0;
+		totalAmout = enemyGenerator.TotalEnemies ();
 	}
 	
 	// Update is called once per frame
@@ -42,7 +45,7 @@ public class EnemyFireController : MonoBehaviour
 	    {
 	        shootTimer -= Time.deltaTime;
 	    }
-        if (enemyAmount<=0)
+		if (totalAmout<=0)
             goCtrl.GameOver(true);
             
 	}
@@ -57,5 +60,7 @@ public class EnemyFireController : MonoBehaviour
         enemies.Remove(enemy);
 
         enemyAmount--;
+		totalAmout--;
     }
+		
 }

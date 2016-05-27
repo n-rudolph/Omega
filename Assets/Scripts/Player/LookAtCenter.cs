@@ -10,12 +10,12 @@ public class LookAtCenter : MonoBehaviour
 	{
 	    height = 0;
 
-	    sm = gameObject.GetComponent<SpaceMovment>();
+	    
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	    transform.LookAt(new Vector3(0,height,0));
-	    height = sm.CurrentHeight;
+		height = transform.position.y;
 	}
 }

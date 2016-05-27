@@ -40,8 +40,8 @@ public class Tower : MonoBehaviour {
 			shootPosition.y = y;
 			shootPosition.z += 3f;
 			GameObject go = (GameObject)Instantiate (prefab, shootPosition, Quaternion.Euler (Vector3.forward));
-			Rigidbody rb = go.GetComponent<Rigidbody> ();
-			rb.AddForce (Vector3.forward * shootForce);
+			//Rigidbody rb = go.GetComponent<Rigidbody> ();
+			//rb.AddForce (Vector3.forward * shootForce);
 			y += 5;
 		}
 	}

@@ -20,7 +20,7 @@ public class GameOverCtrl : MonoBehaviour
         canvas = finishCanvas.GetComponent<Canvas>();
         text = finishText.GetComponent<Text>();
 		soundCtrl = GetComponent<SoundController> ();
-		soundCtrl.PlayBackgroundSound (SoundEnum.BACKGROUND);
+
     }
 
     private bool gameOn = true;
